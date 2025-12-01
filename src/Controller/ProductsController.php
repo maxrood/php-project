@@ -2,7 +2,23 @@
 
 namespace App\Controller;
 
-class ProductsController
+
+use Symfony\Component\Routing\Annotation\Route;
+
+class ProductsController 
 {
-  
+  #[Route('/products/{id}/lowest-price', name: 'lowest-price', methods: 'POST')]
+  public function lowestPrice(int $id): Response
+  {
+    dd($id);
+  }
+
+
+
+
+  #[Route('/products/{id}/promotions', name: 'promotions', methods: 'GET')]
+  public function promotions()
+  {
+
+  }
 }
