@@ -7,5 +7,8 @@ use JsonSerializable;
 interface PromotionEnquiryInterface extends JsonSerializable
 {
   //подумати над вирішенням, можливо видалити пізніше
-
+    public function setDiscountedPrice(?int $discountedPrice): self;
+    public function setPrice(?int $price): self;
+    public function setPromotionId(?int $promotionId): self;
+    public function setPromotionName(?string $promotionName): self;
 }

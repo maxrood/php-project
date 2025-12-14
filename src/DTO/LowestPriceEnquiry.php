@@ -71,9 +71,10 @@ class LowestPriceEnquiry implements PromotionEnquiryInterface
         return $this->price;
     }
 
-    public function setPrice(?int $price): void
+    public function setPrice(?int $price): self //поміняти self на void і видалити return $this;
     {
         $this->price = $price;
+        return $this;
     }
 
     public function getDiscountedPrice(): ?int
@@ -81,9 +82,10 @@ class LowestPriceEnquiry implements PromotionEnquiryInterface
         return $this->discountedPrice;
     }
 
-    public function setDiscountedPrice(?int $discountedPrice): void
+    public function setDiscountedPrice(?int $discountedPrice): self //поміняти self на void і видалити return $this;
     {
         $this->discountedPrice = $discountedPrice;
+        return $this;
     }
 
     public function getPromotionId(): ?int
@@ -91,9 +93,10 @@ class LowestPriceEnquiry implements PromotionEnquiryInterface
         return $this->promotionId;
     }
 
-    public function setPromotionId(?int $promotionId): void
+    public function setPromotionId(?int $promotionId): self //поміняти self на void і видалити return $this;
     {
         $this->promotionId = $promotionId;
+        return $this;
     }
 
     public function getPromotionName(): ?string
@@ -101,9 +104,10 @@ class LowestPriceEnquiry implements PromotionEnquiryInterface
         return $this->promotionName;
     }
 
-    public function setPromotionName(?string $promotionName): void
+    public function setPromotionName(?string $promotionName): self //поміняти self на void і видалити return $this;
     {
         $this->promotionName = $promotionName;
+        return $this;
     }
 
     public function jsonSerialize(): mixed //** mixed? */
