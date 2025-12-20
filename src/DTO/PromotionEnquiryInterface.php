@@ -2,13 +2,13 @@
 
 namespace App\DTO;
 
-use JsonSerializable;
+use App\Entity\Product;
 
 interface PromotionEnquiryInterface
 {
-  //подумати над вирішенням, можливо видалити пізніше
-    public function setDiscountedPrice(?int $discountedPrice): self;
-    public function setPrice(?int $price): self;
-    public function setPromotionId(?int $promotionId): self;
-    public function setPromotionName(?string $promotionName): self;
+    public function getProduct(): ?Product;
+
+    public function setPromotionId(int $promotionId);
+
+    public function setPromotionName(string $promotionName);
 }

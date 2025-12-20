@@ -6,15 +6,21 @@ use App\DTO\LowestPriceEnquiry;
 use App\Filter\LowestPriceFilter;
 use App\Tests\ServiceTestCase;
 use App\Entity\Promotion;
-
+use App\Entity\Product;
 
 
 class LowestPriceFilterTest extends ServiceTestCase
 {
-  public function test_lowest_price_promotions_filtering_is_applied_correctly(): void
+  public function lowest_price_promotions_filtering_is_applied_correctly(): void
   {
+    $product = new Product();
+    $product->setPrice(100);
 
     $enquiry = new LowestPriceEnquiry();
+    $enquiry->setProduct($product);
+    $enquiry->setQuantity(5);
+    $enquiry->setRequestDate('2025-11-27');
+    $enquiry->setVoucherCode('OU812');
 
     $promotions = $this->promotionsDataProvider();
 
@@ -24,7 +30,7 @@ class LowestPriceFilterTest extends ServiceTestCase
     $filteredEnquiry = $lowestPriceFilter->apply($enquiry, ...$promotions);
 
     $this->assertSame(100, $filteredEnquiry->getPrice());
-    $this->assertSame(50, $filteredEnquiry->getDiscountedPrice());
+    $this->assertSame(250, $filteredEnquiry->getDiscountedPrice());
     $this->assertSame('Black Friday half price sale', $filteredEnquiry->getPromotionName());
   }
 
@@ -34,7 +40,7 @@ class LowestPriceFilterTest extends ServiceTestCase
     $promotionOne = new Promotion();
     $promotionOne->setName('Black Friday half price sale');
     $promotionOne->setAdjustment(0.5);
-    $promotionOne->setCriteria(["from" => "2022-12-13", "to" => "2022-12-18"]);
+    $promotionOne->setCriteria(["from" => "2025-11-25", "to" => "2025-11-28"]);
     $promotionOne->setType('date_range_multiplier');
 
     $promotionTwo = new Promotion();
