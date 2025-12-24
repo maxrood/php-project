@@ -12,22 +12,11 @@ class Product
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
+    #[ORM\Column(type: 'integer')]
+    private $id;
 
-    #[ORM\Column]
-    private ?int $price = null;
-
-    // /**
-    //  * @var Collection<int, ProductPromotion>
-    //  */
-    // #[ORM\OneToMany(targetEntity: ProductPromotion::class, mappedBy: 'product')]
-    // private Collection $productPromotions;
-
-    // public function __construct()
-    // {
-    //     $this->productPromotions = new ArrayCollection();
-    // }
+    #[ORM\Column(type: 'integer')]
+    private $price;
 
     public function getId(): ?int
     {
@@ -39,40 +28,10 @@ class Product
         return $this->price;
     }
 
-    public function setPrice(int $price): static
+    public function setPrice(int $price): self
     {
         $this->price = $price;
 
         return $this;
     }
-
-    // /**
-    //  * @return Collection<int, ProductPromotion>
-    //  */
-    // public function getProductPromotions(): Collection
-    // {
-    //     return $this->productPromotions;
-    // }
-
-    // public function addProductPromotion(ProductPromotion $productPromotion): static
-    // {
-    //     if (!$this->productPromotions->contains($productPromotion)) {
-    //         $this->productPromotions->add($productPromotion);
-    //         $productPromotion->setProduct($this);
-    //     }
-
-    //     return $this;
-    // }
-
-    // public function removeProductPromotion(ProductPromotion $productPromotion): static
-    // {
-    //     if ($this->productPromotions->removeElement($productPromotion)) {
-    //         // set the owning side to null (unless already changed)
-    //         if ($productPromotion->getProduct() === $this) {
-    //             $productPromotion->setProduct(null);
-    //         }
-    //     }
-
-    //     return $this;
-    // }
 }
